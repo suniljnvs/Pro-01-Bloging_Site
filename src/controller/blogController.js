@@ -97,7 +97,10 @@ let createBlog = async (req, res) => {
     }
 };
 
+
+//===========================================< get Blog >================================
 // Get All data
+
 let GetBlog = async (req, res) => {
     try {
         const filterQuery = { isDeleted: false, deletedAt: null, isPublished: true };
@@ -236,6 +239,8 @@ let updateBlog = async function (req, res) {
     }
 };
 
+
+//=====================================< Delete Blog >==============================
 // Delete blog document with userId 
 
 let deleteBlogById = async (req, res) => {
