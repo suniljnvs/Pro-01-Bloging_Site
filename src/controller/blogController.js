@@ -18,6 +18,10 @@ const isValidObjectId = function (objectId) {
     return ObjectId.isValid(objectId)
 }
 
+
+//=================================== < Create blogs >==================================================
+
+
 let createBlog = async (req, res) => {
     try {
         let requestBody = req.body;
@@ -98,7 +102,7 @@ let createBlog = async (req, res) => {
 };
 
 
-//===========================================< get Blog >================================
+//======================================< get Blog >================================
 // Get All data
 
 let GetBlog = async (req, res) => {
@@ -141,6 +145,11 @@ let GetBlog = async (req, res) => {
         return res.status(500).send({ message: error.message });
     }
 };
+
+
+
+// ====================================== Update Blog =======================================
+
 
 // Updates a blog by changing the its title, body, adding tags, adding a subcategory. (Assuming tag and subcategory received in body is need to be added)
 // Updates a blog by changing its publish status i.e. adds publishedAt date and set published to true
@@ -281,7 +290,8 @@ let deleteBlogById = async (req, res) => {
 };
 
 
-// DELETE /blogs?queryParams
+// =========================DELETE /blogs?queryParams============================================
+
 // Delete blog documents by category, authorid, tag name, subcategory name, unpublished
 // If the blog document doesn't exist then return an HTTP status of 404 with a body like this
 
