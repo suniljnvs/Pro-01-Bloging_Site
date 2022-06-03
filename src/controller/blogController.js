@@ -236,13 +236,16 @@ let updateBlog = async function (req, res) {
     }
 };
 
-// Delete blog document with userId
+// Delete blog document with userId 
 
 let deleteBlogById = async (req, res) => {
     try {
         const params = req.params;
         const blogId = params.blogId;
         const authorIdFromToken = req.authorId;
+
+
+        //validet blogId
 
         if (!isValidObjectId(blogId)) {
             res.status(400).send({ status: false, messag: `${blogId} is not a valid blog id` })
