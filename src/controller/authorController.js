@@ -17,6 +17,9 @@ const isValidReqestBody = function (requestBody) {
     return Object.keys(requestBody).length > 0;
 }
 
+//=================================================================================================
+
+
 let createAuthor = async function (req, res) {
     try {
         const requestBody = req.body;
@@ -65,7 +68,7 @@ let createAuthor = async function (req, res) {
 
         let emailIsAllreadyUsed = await authorModel.findOne({ email })  //  {email:email} object shorthand property
         if (emailIsAllreadyUsed) {
-            res.status(400).send({ status: false, msg: `${email} Try another email is already used` });
+            res.status(400).send({ status: false, msg: "Try another email,this email is already used "});
             return
         }
 
@@ -123,7 +126,8 @@ const loginAuthor = async (req, res) => {
             authorId: author._id,
             iat: Math.floor(Date.now() / 1000),
             exp: Math.floor(Date.now() / 1000) + 10 * 60 * 60
-        }, "someeverysecuredprivatekey2022abhishek@(%*637#$^@()73)(#$%^)");
+        },
+         "Sunil_project_01");
 
         res.header('x-api-key', token);
         res.status(200).send({ status: true, message: "Author login successfully", data: { token } })

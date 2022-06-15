@@ -18,7 +18,7 @@ let blogSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "Author",
         required: "Blog author is required"
-    },  // strictPopulate,
+    },  
 
     tags: [{
         type: String,
@@ -59,4 +59,4 @@ let blogSchema = new mongoose.Schema({
 
 }, { tiemstamps: true });
 
-module.exports = mongoose.model("Blog", blogSchema);
+module.exports = mongoose.model("Blog", blogSchema);  //blogs

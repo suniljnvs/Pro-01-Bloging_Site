@@ -7,7 +7,7 @@ const isValidObjectId = (ObjectId) => {
 };
 
 
-let autherAuth = async (req, res, next) => {
+let autherAuth = async (req, res, next) => {      // arrow function
 
     try {
         let token = req.headers["x-api-key"];
@@ -16,7 +16,7 @@ let autherAuth = async (req, res, next) => {
             return res.status(403).send({ status: false, message: "Missing authentication token in request" })
         };
 
-        let decoded = await jwt.verify(token, "someeverysecuredprivatekey2022abhishek@(%*637#$^@()73)(#$%^)");
+        let decoded = await jwt.verify(token, "Sunil_project_01");
 
         if (!decoded) {
             return res.status(400).send({ status: false, message: "token is invalid" })
