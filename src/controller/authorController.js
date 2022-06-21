@@ -61,17 +61,17 @@ let createAuthor = async function (req, res) {
             return
         }
 
-        if (!isValid(password)) {
-            res.status(400).send({ status: false, msg: "Password is required" });
-            return
-        }
-
         let emailIsAllreadyUsed = await authorModel.findOne({ email })  //  {email:email} object shorthand property
         if (emailIsAllreadyUsed) {
             res.status(400).send({ status: false, msg: "Try another email,this email is already used "});
             return
         }
 
+        if (!isValid(password)) {
+            res.status(400).send({ status: false, msg: "Password is required" });
+            return
+        }
+        
         // Validation is End 
 
         const authorData = { fname, lname, title, email, password }

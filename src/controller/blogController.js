@@ -27,11 +27,12 @@ let createBlog = async (req, res) => {
         let requestBody = req.body;
 
         if (!isValidReqestBody(requestBody)) {
-            res.status(400).send({ status: false, message: "Invalid request parameter. Please provide author details" });
+            res.status(400).send({ status: false, message: "Please provide author details" });
             return
         }
 
-        // Extract Params
+        // Extract / destructure of request body
+
         let { title, body, authorId, tags, category, subcategory, isPublished } = requestBody;
 
         // Validation start is here
@@ -40,17 +41,10 @@ let createBlog = async (req, res) => {
         };
 
         if (!isValid(body)) {
-            return res.status(400).send({ status: false, message: "body is required" });
+            return res.status(400).send({ status: false, message: "Body is required" });
         };
 
-        if (!isValid(authorId)) {
-            return res.status(400).send({ status: false, message: "this author id not valid" });
-        };
-
-        if (!isValidObjectId(authorId)) {
-            return res.status(400).send({ status: false, message: "this author id not valid" });
-        };
-
+      
         if (!isValid(tags)) {
             return res.status(400).send({ status: false, message: "Tags is required" });
         };
@@ -59,10 +53,18 @@ let createBlog = async (req, res) => {
             return res.status(400).send({ status: false, message: "Blog category is required" });
         };
 
+        if (!isValid(authorId)) {
+            return res.status(400).send({ status: false, message: " Author id is required" });
+        };
+
+        if (!isValidObjectId(authorId)) {
+            return res.status(400).send({ status: false, message: "Please enter valid author id" });
+        };
+
         const author = await authorModel.findById(authorId);
         if (!author) {
-            res.status(400).send({ status: false, message: "Author does not exit" });
-            return
+            return res.status(400).send({ status: false, message: "Author does not exit" });
+            
         }
         // Validation ends
 
