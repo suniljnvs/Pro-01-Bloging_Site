@@ -86,7 +86,7 @@ let createAuthor = async function (req, res) {
 
 //====================================< login Authores >===========================================
 
-const loginAuthor = async (req, res) => {
+const loginAuthor = async function(req, res){
     try {
         let requestBody = req.body;
 
@@ -130,7 +130,7 @@ const loginAuthor = async (req, res) => {
          "Sunil_project_01");
 
         res.header('x-api-key', token);
-        res.status(200).send({ status: true, message: "Author login successfully", data: { token } })
+        res.status(201).send({ status: true, message: "Author login successfully", data: { token } })
 
     } catch (error) {
         res.status(500).send({ status: false, message: error.message })

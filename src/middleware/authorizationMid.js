@@ -1,13 +1,7 @@
 const jwt = require("jsonwebtoken");
-const blogModel = require('../model/blogModels');
-let authorModel = require("../model/authorModels");
-
-const isValidObjectId = (ObjectId) => {
-    return mongoose.Types.ObjectId.isValid(ObjectId);
-};
 
 
-let autherAuth = async (req, res, next) => {      // arrow function
+let autherAuth = async function(req, res, next) {      
 
     try {
         let token = req.headers["x-api-key"];

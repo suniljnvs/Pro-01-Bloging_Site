@@ -27,8 +27,6 @@ router.delete("/blogs/:blogId", autherAuth, deleteBlogById);
 
 router.delete("/blogs", autherAuth, deleteBlogByQuerParmas);
 
-// Login user 
-
 
 
 module.exports = router;
